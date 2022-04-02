@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  control:
+    image: control-node:0.0.1
+    build:
+      context: .
+      dockerfile: ./control-node.Dockerfile
+    volumes:
+      - ./data/playbooks:/root/playbooks
+      - ./data/config:/etc/ansible
+
+  managed:
+    image: managed-node:0.0.1
+    build:
+      context: .
+      dockerfile: ./managed-node.Dockerfile
